@@ -1,0 +1,23 @@
+<h1>Parabéns!</h1>
+<h4>Seu componente está sendo exibido em tela</h4>
+<hr>
+<h5>Como aparece o seu evento abaixo?</h5>
+<div *ngFor="let mel of evento">
+
+    <div style="margin-top:30px">
+        <span *ngIf="mel.onlineUrl">EventoOnline {{mel.onlineUrl}}</span><br/> Evento:{{ mel.name }}
+    </div>
+
+    <div>
+        Data:{{ mel.date }}
+    </div>
+    <div>
+        Hora:{{ mel.time }}
+    </div>
+    <div>
+        <ng-container *ngIf="mel.location !==undefined">
+            <app-endereco [location]="mel.location" [nome]="mel.name" (attEnd)="attEndereco($event)"></app-endereco>
+        </ng-container>
+    </div>
+
+</div>
